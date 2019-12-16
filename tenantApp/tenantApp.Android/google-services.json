@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "814887531167",
+    "firebase_url": "https://budi-concierge.firebaseio.com",
+    "project_id": "budi-concierge",
+    "storage_bucket": "budi-concierge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814887531167:android:3116e51b46bb29ed42a8aa",
+        "android_client_info": {
+          "package_name": "com.xamarin.budi.tenant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814887531167-861m83ik5esna8bg6gillnlp63r09guo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkKOSbn_wUD33oMGF8Jn-5VLV9QXxY2Aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814887531167-861m83ik5esna8bg6gillnlp63r09guo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

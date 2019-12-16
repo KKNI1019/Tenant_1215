@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:tenantApp"
+             x:Class="tenantApp.UserInfoPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+            </StackLayout.Margin>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="50">
+                <StackLayout  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,.5,40,50" >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="stkBack_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image  Source="imgBack.png" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                
+                <Label Text="詳細情報" FontSize="18" TextColor="Black" AbsoluteLayout.LayoutBounds=".5,.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            </AbsoluteLayout>
+            <StackLayout  Padding="20, 30,20,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label Text="姓" VerticalTextAlignment="End" TextColor="Black"/>
+                    <Label Text="名" Grid.Column="1" VerticalTextAlignment="End" TextColor="Black"/>
+                    <local:RoundedEntry x:Name="ent_familyname" Placeholder="鈴木" PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    Grid.Row="1"
+                                HorizontalOptions="Fill"/>
+                    <local:RoundedEntry x:Name="ent_name" Placeholder="一郎" PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                HorizontalOptions="Fill"/>
+                </Grid>
+
+                <Grid Margin="0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Text="生年月日" Grid.ColumnSpan="2" VerticalTextAlignment="End" TextColor="Black"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.8*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <local:RoundedEntry x:Name="ent_birthyear" Placeholder="1983" MaxLength="4" PlaceholderColor="Gray" Keyboard="Numeric"
+                                        HorizontalTextAlignment="Center"
+                                    TextColor="Black"/>
+                        <Label Text="年" TextColor="Black" VerticalTextAlignment="End" Grid.Column="1"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+                            <local:RoundedEntry x:Name="ent_birthmonth" Placeholder="09" MaxLength="2" PlaceholderColor="Gray" Keyboard="Numeric"
+                                            HorizontalTextAlignment="Center"
+                                    TextColor="Black"
+                                HorizontalOptions="Fill"/>
+                            <Label Text="月" TextColor="Black" Grid.Column="1" VerticalTextAlignment="End"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+                            <local:RoundedEntry x:Name="ent_birthdate" MaxLength="2" Placeholder="01" PlaceholderColor="Gray" Keyboard="Numeric"
+                                            HorizontalTextAlignment="Center"
+                                    TextColor="Black"
+                                HorizontalOptions="Fill"/>
+                            <Label Text="日" TextColor="Black" Grid.Column="1" VerticalTextAlignment="End"/>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Text="電話番号" VerticalTextAlignment="End" TextColor="Black" />
+                    <local:RoundedEntry x:Name="ent_phoneNum1" Placeholder="09012345678" MaxLength="11" PlaceholderColor="Gray" Keyboard="Numeric"
+                                    TextColor="Black"
+                                    Grid.Row="1"
+                                HorizontalOptions="Fill"/>
+                </Grid>
+                
+                
+                <ImageButton Source="imgBtn_confirm.png"
+                         Margin="0,50,0,0"
+                         x:Name="imgBtn_confirm"
+                         BackgroundColor="Transparent"
+                         Clicked="ImgBtn_confirm_Clicked"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

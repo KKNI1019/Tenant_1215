@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tenantApp.SendCertiPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout BackgroundColor="WhiteSmoke">
+                <StackLayout.Margin>
+                    <OnPlatform x:TypeArguments="Thickness"
+                                iOS="0,20,0,0"
+                                Android="0,0,0,0"/>
+                </StackLayout.Margin>
+                <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                                BackgroundColor="White"
+                                HeightRequest="50">
+                    <StackLayout  AbsoluteLayout.LayoutFlags="PositionProportional" 
+                                  AbsoluteLayout.LayoutBounds="0,.5,40,50" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="stkBack_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image  Source="imgBack.png" 
+                                VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Label Text="身分証の撮影" 
+                           FontSize="18"
+                           TextColor="Black" 
+                           AbsoluteLayout.LayoutBounds=".5,.5" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                </AbsoluteLayout>
+                <Label Text="送信してよろしいですか？"
+                       HorizontalOptions="CenterAndExpand" 
+                       TextColor="Black"
+                       Margin="0,30,0,20"/>
+                <StackLayout BackgroundColor="LightGray">
+                    <Image x:Name="img_certificationPhoto"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" 
+                           HeightRequest="240"
+                           Margin="6,0"
+                           Aspect="AspectFit"/>
+                </StackLayout>
+                <ImageButton x:Name="imgBtn_sendCerti"
+                             BackgroundColor="Transparent"
+                             Source="imgBtn_sendCerti.png"
+                             Clicked="ImgBtn_sendCerti_Clicked"
+                             Margin="0,50,0,-10"/>
+                <Button x:Name="btnCaptureAgain"
+                        BackgroundColor="Transparent"
+                        Text="もう一度撮影する"
+                        Clicked="BtnCaptureAgain_Clicked"
+                        TextColor="#F8B500"/>
+            </StackLayout>
+            <ActivityIndicator x:Name="loadinbar"
+                               Color="DeepPink"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="Center"/>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

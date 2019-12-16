@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:tenantApp"
+             xmlns:imgae="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="tenantApp.UserInfoUpdatePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout BackgroundColor="WhiteSmoke">
+                <StackLayout.Margin>
+                    <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+                </StackLayout.Margin>
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="50">
+                    <StackLayout  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,.5,40,50" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="stkBack_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image  Source="imgBack.png" VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+
+                    <Label Text="情報編集" FontSize="18" TextColor="Black" AbsoluteLayout.LayoutBounds=".5,.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                </AbsoluteLayout>
+                <ScrollView  Padding="20, 10">
+                    <StackLayout>
+                        <imgae:CircleImage x:Name="imgProfile"
+                                           HeightRequest="80"
+                                           WidthRequest="80"
+                                           Aspect="AspectFill"
+                                           HorizontalOptions="Center"
+                                           Margin="0,20,0,10"
+                                           Source="imgUser.png">
+                            <imgae:CircleImage.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="imgprofile_tap"/>
+                            </imgae:CircleImage.GestureRecognizers>
+                        </imgae:CircleImage>
+                        <Label Text="氏名" FontSize="11" VerticalTextAlignment="End" TextColor="Black"/>
+                        <Frame BorderColor="DarkGray"
+                               Padding="5"
+                               HeightRequest="30"
+                               HasShadow="False"
+                               CornerRadius="3">
+                            <Label x:Name="lbl_name"
+                                   Text=" "
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="15"/>
+                        </Frame>
+                        <Label Text="ユーザー名" FontSize="11" VerticalTextAlignment="End" TextColor="Black"/>
+                        <Frame BorderColor="DarkGray"
+                               Padding="5"
+                               HeightRequest="30"
+                               HasShadow="False"
+                               CornerRadius="3">
+                            <Label x:Name="lbl_nickname"
+                                   Text=" "
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="15"/>
+                        </Frame>
+                        <Label Text="メールアドレス" FontSize="11" VerticalTextAlignment="End" TextColor="Black"/>
+                        <Frame BorderColor="DarkGray"
+                               Padding="5"
+                               HeightRequest="30"
+                               HasShadow="False"
+                               CornerRadius="3">
+                            <Label x:Name="lbl_email"
+                                   Text=" "
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="15"/>
+                        </Frame>
+                        <Label Text="住所" FontSize="11" VerticalTextAlignment="End" TextColor="Black"/>
+                        <Frame BorderColor="DarkGray"
+                               Padding="5"
+                               HeightRequest="30"
+                               HasShadow="False"
+                               CornerRadius="3">
+                            <Label x:Name="lbl_tenant_address"
+                                   Text=" "
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="15"/>
+                        </Frame>
+                        <Label Text="連絡先電話番号" FontSize="11" VerticalTextAlignment="End" TextColor="Black"/>
+                        <Frame BorderColor="DarkGray"
+                               Padding="5"
+                               HeightRequest="30"
+                               HasShadow="False"
+                               CornerRadius="3">
+                            <local:BorderlessEntry x:Name="entry_phone"
+                                                   VerticalOptions="Center"
+                                        TextColor="Black"
+                                        FontSize="15"/>
+                        </Frame>
+                        
+                        <ImageButton Source="update.png"
+                         Margin="0,15,0,0"
+                         x:Name="imgBtn_confirm"
+                         BackgroundColor="Transparent"
+                         Clicked="ImgBtn_confirm_Clicked"/>
+                    </StackLayout>
+
+                </ScrollView>
+            </StackLayout>
+
+            <ActivityIndicator x:Name="loadingbar" VerticalOptions="Center" HorizontalOptions="Center" Color="DeepPink"/>
+        </Grid>
+        
+    </ContentPage.Content>
+
+</ContentPage>

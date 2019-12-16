@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tenantApp.TopPage"
+             NavigationPage.HasNavigationBar="false">
+    
+    <ContentPage.Content>
+
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+            </StackLayout.Margin>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="50">
+                <Image Source="logo_full_land.png" AbsoluteLayout.LayoutBounds=".5,.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <ImageButton BackgroundColor="Transparent" Source="icon_menu" Padding="10" Clicked="menuBtn_clicked" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".99,.5"/>
+            </AbsoluteLayout>
+            <StackLayout Padding="30,30,30,0" >
+                <Frame OutlineColor="DarkGray"
+                   BorderColor="DarkGray"
+                       Padding="0,10,0,5"
+                   CornerRadius="5">
+                    <StackLayout>
+                        <AbsoluteLayout  Margin="10,0">
+                            <Image Source="Rectangle.png" AbsoluteLayout.LayoutBounds=".5,.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                            <Label Text="今月の家賃(共益費)"
+                               AbsoluteLayout.LayoutBounds=".5,.5"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               TextColor="White"
+                               FontSize="12"/>
+                        </AbsoluteLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  Margin="10,0">
+                            <Label x:Name="lbl_rentCost"  
+                               TextColor="Black"
+                               FontAttributes="Bold"    
+                               FontSize="15"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal"  Margin="10,0">
+                            <Label Text="支払日 : " FontSize="12"/>
+                            <Label x:Name="lbl_payDay" FontSize="12"/>
+                        </StackLayout>
+                        <Image BackgroundColor="DarkGray"
+                           HeightRequest="1"/>
+                        <Grid  Margin="20,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="23"/>
+                                <RowDefinition Height="23"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="入居期間" FontSize="12"/>
+                            <Label x:Name="lbl_period"  HorizontalTextAlignment="End" Grid.Column="1" FontSize="12" TextColor="Black"/>
+                            <Label Text="更新日" FontSize="12" Grid.Row="1"/>
+                            <Label x:Name="lbl_finalDay"  FontSize="12" Grid.Row="1" Grid.ColumnSpan="2" HorizontalTextAlignment="End" TextColor="Black"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton
+                            BackgroundColor="Transparent"
+                            Source="water_trouble.png"
+                            Clicked="btnWaterQA_Clicked"/>
+                    <ImageButton
+                        Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            Clicked="btnElectricityTrouble_Clicked"
+                            Source="electricity_trouble.png"/>
+                    <ImageButton
+                        Grid.Column="2"
+                            BackgroundColor="Transparent"
+                            Source="gas_trouble.png"
+                            Clicked="btnGasTrouble_Clicked"/>
+                </Grid>
+                
+                <ImageButton BackgroundColor="Transparent"
+                         x:Name="imgBtn_chatbg"
+                         HorizontalOptions="FillAndExpand"
+                         Source="imgChatBg.png"
+                         Clicked="ImgBtn_chatbg_Clicked"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                            Source="board.png"
+                        Clicked="ImgBtn_board_Clicked"/>
+                    <ImageButton BackgroundColor="Transparent"
+                                 Grid.Column="1"
+                            Source="btn_news.png"
+                                 Clicked="ImgBtn_column_Clicked"/>
+                    <ImageButton BackgroundColor="Transparent"
+                                 Grid.Column="2"
+                            Source="QA.png"
+                                 Clicked="ImgBtn_RecentQA_Clicked"/>
+                </Grid>
+                <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="FillAndExpand">
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

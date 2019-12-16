@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:tenantApp"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="tenantApp.Views.UserRegisterPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="WhiteSmoke">
+            <StackLayout>
+                <StackLayout.Margin>
+                    <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+                </StackLayout.Margin>
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" 
+                                BackgroundColor="White" 
+                                HeightRequest="50">
+                    <StackLayout  AbsoluteLayout.LayoutFlags="PositionProportional" 
+                                  AbsoluteLayout.LayoutBounds="0,.5,40,50" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="stkBack_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image  Source="imgBack.png" 
+                                VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Image Source="logo_full_land.png" 
+                           AbsoluteLayout.LayoutBounds=".5,.5" 
+                           HeightRequest="40" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                </AbsoluteLayout>
+                <StackLayout Padding="40,20,40,0">
+                    <Label Text="メールアドレス" FontSize="10" />
+                    <local:RoundedEntry  Keyboard="Email" 
+                                         x:Name="ent_email"
+                                         TextColor="Black"/>
+                    <Label Text="パスワード" FontSize="10"/>
+                    <local:RoundedEntry x:Name="ent_pwd"
+                                        IsPassword="True"
+                                        TextColor="Black"/>
+                    <Label Text="パスワード再入力" FontSize="10"/>
+                    <local:RoundedEntry x:Name="ent_pwd_again"
+                                        IsPassword="True"
+                                        TextColor="Black"/>
+
+                    <StackLayout Orientation="Horizontal" 
+                                 HorizontalOptions="Center" 
+                                 Margin="0,6">
+                        <ImageButton x:Name="imgBtn_unchecked" 
+                                     VerticalOptions="Center" 
+                                     Source="unchecked" 
+                                     BackgroundColor="Transparent"  
+                                     Clicked="uncheckedBtn_Clicked"/>
+                        <ImageButton x:Name="imgBtn_checked"  
+                                     VerticalOptions="Center" 
+                                     Source="checked" 
+                                     BackgroundColor="Transparent" 
+                                     IsVisible="False" 
+                                     Clicked="checkedBtn_Clicked"/>
+                        <Label Text="利用規約"
+                               Margin="0,0,-5,0"
+                               FontSize="13"
+                               TextColor="#F8B500"
+                               TextDecorations="Underline"
+                               VerticalOptions="Center"
+                               x:Name="label_rule"/>
+                        <Label Text="に同意する" 
+                               FontSize="13" 
+                               VerticalTextAlignment="Center"
+                               VerticalOptions="Center"/>
+                    </StackLayout>
+                    <ImageButton BackgroundColor="Transparent"
+                                 Source="btn_register"
+                                 x:Name="imgBtn_Login"
+                                 Clicked="ImgBtn_Login_Clicked"
+                                 Margin="0,0,0,20"/>
+                    <Label Text="SNSでログイン" FontSize="10"/>
+                    <ImageButton BackgroundColor="Transparent"
+                                 Source="imgBtn_facebookLogin"
+                                 x:Name="imgBtn_facebookLogin"
+                                 Clicked="ImgBtn_facebookLogin_Clicked"/>
+                    <ImageButton BackgroundColor="Transparent"
+                                 Source="imgBtn_twitterLogin"
+                                 x:Name="imgBtn_twitterLogin"
+                                 Margin="0,-15,0,-15"
+                                 Clicked="ImgBtn_twitterLogin_Clicked"/>
+                    <ImageButton BackgroundColor="Transparent"
+                                 Source="imgBtn_lineLogin"
+                                 x:Name="imgBtn_lineLogin"
+                                 Clicked="ImgBtn_lineLogin_Clicked"/>
+
+                </StackLayout>
+            </StackLayout>
+            <ActivityIndicator x:Name="loadingbar" 
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"
+                               Color="DeepPink"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

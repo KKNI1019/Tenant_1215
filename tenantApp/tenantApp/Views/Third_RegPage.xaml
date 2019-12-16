@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:tenantApp"
+             x:Class="tenantApp.Third_RegPage"
+             NavigationPage.HasNavigationBar="False">
+      
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+            </StackLayout.Margin>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" 
+                            BackgroundColor="White" 
+                            HeightRequest="50">
+                <StackLayout  AbsoluteLayout.LayoutFlags="PositionProportional" 
+                              AbsoluteLayout.LayoutBounds="0,.5,40,50" >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="stkBack_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image  Source="imgBack.png" 
+                            VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                
+            </AbsoluteLayout>
+            <Image Source="logo.png"
+                   Margin="80,20,80,10"/>
+            <Image x:Name="img_building"
+                   Margin="50,0,50,0"/>
+            <Label x:Name="lbl_buildingName"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"
+                   Margin="0,7,0,20"/>
+            <Label Text="部屋番号を入力してください"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"/>
+            <local:RoundedEntry Placeholder="1006" PlaceholderColor ="Gray"
+                                x:Name="ent_roomNum"
+                                Keyboard="Numeric"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold"
+                                WidthRequest="250"
+                                Margin="0,5,0,30"
+                                HorizontalOptions="Center"/>
+            <ImageButton Source="btn_finish"
+                         Clicked="imgBtn_finish_clicked"
+                         BackgroundColor="Transparent"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

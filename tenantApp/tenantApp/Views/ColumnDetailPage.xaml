@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tenantApp.ColumnDetailPage"
+             NavigationPage.HasNavigationBar="false">
+    <!--Title="コラム"
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Icon="icon_menu.png" Clicked="btnMenu_Clicked" />
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+            </StackLayout.Margin>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" 
+                            BackgroundColor="White"
+                            HeightRequest="50">
+                <ImageButton Padding="10"
+                             BackgroundColor="Transparent" 
+                             Source="imgBack" 
+                             AbsoluteLayout.LayoutFlags="PositionProportional" 
+                             AbsoluteLayout.LayoutBounds=".01,.5" 
+                             Clicked="imgBack_Clicked"/>
+                <Label Text="コラム" 
+                       FontSize="18" 
+                       TextColor="Black" 
+                       AbsoluteLayout.LayoutBounds=".5,.5"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <ImageButton Padding="10" 
+                             BackgroundColor="Transparent"
+                             Source="icon_menu" 
+                             AbsoluteLayout.LayoutFlags="PositionProportional" 
+                             AbsoluteLayout.LayoutBounds=".99,.5" 
+                             Clicked="btnMenu_Clicked"/>
+            </AbsoluteLayout>
+            <ScrollView>
+                <StackLayout Margin="10">
+                    <Frame OutlineColor="LightGray"
+                           BorderColor="LightGray" 
+                           CornerRadius="7" 
+                           VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding date,StringFormat='{}{0:yyyy/MM/dd}'}" 
+                                       FontSize="12" 
+                                       VerticalOptions="Center"/>
+                                <Image Source="img_new.png" 
+                                       HeightRequest="18" 
+                                       VerticalOptions="Center" 
+                                       IsVisible="{Binding IsVisible}"/>
+                            </StackLayout>
+                            <Label Text="{Binding col_title}" 
+                                   TextColor="Black" 
+                                   FontSize="14" />
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Image x:Name="imgWritter"
+                                       Source="{Binding img_url}" 
+                                       WidthRequest="22" 
+                                       VerticalOptions="Center"/>
+                                <Label x:Name="lbl_writterName" 
+                                       Text="{Binding user_name}"
+                                       TextColor="Black" 
+                                       FontSize="12" VerticalOptions="Center" />
+                            </StackLayout>
+                            <Image BackgroundColor="LightGray" 
+                                   HeightRequest="1" 
+                                   Margin="-20,6" />
+                            <Label Text="{Binding col_content}" 
+                                   TextColor="Black"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="EndAndExpand" 
+                         BackgroundColor="#161414" 
+                         Opacity="0.8" 
+                         Padding="20,6">
+                <Label Text="おすすめ関連記事" 
+                       TextColor="White"/>
+                <Frame OutlineColor="DarkGray"
+                       BorderColor="DarkGray"
+                       VerticalOptions="Center"
+                       CornerRadius="10">
+                    <StackLayout x:Name="article">
+                        <Label Text="{Binding col_title}" 
+                               TextColor="Black" 
+                               FontSize="14" />
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding img_url}" 
+                                   WidthRequest="22" 
+                                   VerticalOptions="Center"/>
+                            <Label Text="{Binding user_name}" 
+                                   TextColor="Black"
+                                   FontSize="12" 
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

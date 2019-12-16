@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tenantApp.App">
+    <Application.Resources>
+        <Color x:Key="AppBgColor">WhiteSmoke</Color>
+        <Color x:Key="iOSNavBarColor">WhiteSmoke</Color>
+        <Color x:Key="AndroidNavBarColor">White</Color>
+        <!--<Color x:Key="AndroidNavBarColor">WhiteSmoke</Color>-->
+        <Color x:Key="iOSNavBarTextColor">Black</Color>
+        <Color x:Key="AndroidNavBarTextColor">Black</Color>
+        
+        <Style TargetType="{x:Type NavigationPage}">
+            <Setter Property="BarBackgroundColor"
+                    Value="{OnPlatform iOS={StaticResource iOSNavBarColor}, Android={StaticResource AndroidNavBarColor}}"/>
+            <Setter Property="BarTextColor"
+                    Value="{OnPlatform iOS={StaticResource iOSNavBarTextColor}, Android={StaticResource AndroidNavBarTextColor}}"/>
+        </Style>
+    </Application.Resources>
+</Application>

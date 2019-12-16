@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tenantApp.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+            </StackLayout.Margin>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" 
+                            BackgroundColor="White"
+                            HeightRequest="50">
+                <ImageButton BackgroundColor="Transparent"
+                             Padding="10" 
+                             Source="imgBack" 
+                             AbsoluteLayout.LayoutFlags="PositionProportional" 
+                             AbsoluteLayout.LayoutBounds=".01,.5" />
+                <Label Text="Main Page"
+                       FontSize="18" 
+                       TextColor="Black" 
+                       AbsoluteLayout.LayoutBounds=".5,.5" 
+                       AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            </AbsoluteLayout>
+
+            <StackLayout Margin="0,-6,0,0">
+                <!--<StackLayout Orientation="Horizontal">
+                    <Image Source="{Binding Item[0].Snippet.Thumbnails.Medium.url}" VerticalOptions="Center" HeightRequest="80" WidthRequest="120" Aspect="AspectFill"/>
+                    <StackLayout VerticalOptions="Center" Margin="-3,0,5,0" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding Item[0].Snippet.title}" TextColor="Black" Margin="5,0,0,0"/>
+                    </StackLayout>
+                </StackLayout>-->
+                <ListView  HasUnevenRows="True"
+                           x:Name="lstview" >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" 
+                                                 Padding="5">
+                                        <Image Source="{Binding Snippet.Thumbnails.Medium.url}" 
+                                               VerticalOptions="Center" 
+                                               HeightRequest="80" 
+                                               WidthRequest="120" 
+                                               Aspect="AspectFill"/>
+                                        <StackLayout VerticalOptions="Center"
+                                                     Margin="-3,0,0,0" 
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Snippet.title}" 
+                                                   TextColor="Black"
+                                                   Margin="5,0,0,0"
+                                                   MaxLines="3"/>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

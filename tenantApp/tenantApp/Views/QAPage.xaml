@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="tenantApp.QAPage"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Name="ItemTemplate" 
+                          x:Key="ItemTemplate" >
+                <Frame OutlineColor="LightGray" 
+                       BorderColor="LightGray"
+                       CornerRadius="7"
+                       Padding="15,8" 
+                       BackgroundColor="White" 
+                       Margin="20,6">
+                    <StackLayout VerticalOptions="Center">
+                        <StackLayout Orientation="Horizontal" >
+                            <Label Text="{Binding date,StringFormat='{}{0:yyyy/MM/dd}'}" 
+                                   Margin="20,0,5,0" 
+                                   FontSize="10" 
+                                   VerticalOptions="Center"/>
+                            <Image Source="img_new.png"
+                                   HeightRequest="16"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Label Text="{Binding col_title}"
+                               TextColor="Black"
+                               FontSize="12" />
+                        <Label Text="{Binding col_content}" 
+                               TextColor="Black"
+                               FontSize="12" 
+                               MaxLines="2" />
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="0,20,0,0"
+                            Android="0,0,0,0"/>
+            </StackLayout.Margin>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                            BackgroundColor="White" 
+                            HeightRequest="50">
+                <ImageButton Padding="10"
+                             BackgroundColor="Transparent"
+                             Source="imgBack" 
+                             AbsoluteLayout.LayoutFlags="PositionProportional" 
+                             AbsoluteLayout.LayoutBounds=".01,.5"
+                             Clicked="imgBack_Clicked"/>
+                <Label Text="最近あったQ&amp;A"
+                       FontSize="18" 
+                       TextColor="Black"
+                       AbsoluteLayout.LayoutBounds=".5,.5" 
+                       AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <ImageButton Padding="10" 
+                             BackgroundColor="Transparent" 
+                             Source="icon_menu"  
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             AbsoluteLayout.LayoutBounds=".99,.5" 
+                             Clicked="imgMenu_Clicked"/>
+            </AbsoluteLayout>
+            <sync:SfListView x:Name="sflistview"
+                             BackgroundColor="WhiteSmoke"
+                             ItemsSource="{Binding Columns}"  
+                             ItemTemplate="{StaticResource ItemTemplate}"
+                             AllowSwiping="True" 
+                             SwipeOffset="120" 
+                             SwipeThreshold="30"
+                             IsStickyHeader="True"
+                             SwipeStarted="ListView_SwipeStarted" 
+                             SwipeEnded="ListView_SwipeEnded" 
+                             Swiping="ListView_Swiping" 
+                             AutoFitMode="Height"
+                             SelectionBackgroundColor="Transparent">
+                <sync:SfListView.RightSwipeTemplate>
+                    <DataTemplate x:Name="RightSwipeTemplate" >
+
+                        <Button BackgroundColor="#DC595F"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill"
+                                Margin="0,6,20,6" 
+                                BorderRadius="7" 
+                                Text="削除" 
+                                TextColor="White"
+                                Clicked="BtnDel_Clicked"
+                                x:Name="btnDel"/>
+
+                    </DataTemplate>
+                </sync:SfListView.RightSwipeTemplate>
+            </sync:SfListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+   
+</ContentPage>
