@@ -36,5 +36,12 @@ namespace tenantApp.Webservices
         public const string TENANT_REGIST_FROM = "tenant_regist_from";
         public const string REGISTERED = "registered";
         public const string DEVICE_TOKEN = "device_token";
+
+        public const string BotAnswer_2 = "電気·ガス·水道等につきましては、 各設備会社へ使用開始の連絡および契約手続きを必ず行ってください。";
+        public const string BotAnswer_3 = "「賃貸借契約書」に開錠方法の記載がございますので、そちらをご確認ください。記載がない場合は、弊社までご連絡をお願いいたします。";
+        public const string BotAnswer_5 = "ブレーカーが落ちてませんでしょうか？ブレーカーのスイッチが上がっているかのご確認をお願いします。";
+        public const string BotAnswer_6 = "ブレーカーが上がらない場合はアンペア数の上限を超えている場合があります。使用中の電化製品を一度お切りいただき、再度お試しください。";
+        public const string BotAnswer_default = "大変申し訳ございませんがこちらでは回答しかねます、問い合わせフォームよりご連絡下さい。";
+        public const string BotAnswer_other = "おこまりの内容をおしえてください。";
     }
 }

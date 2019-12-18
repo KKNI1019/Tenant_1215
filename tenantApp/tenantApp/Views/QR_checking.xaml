@@ -19,8 +19,11 @@
                                     Margin="0,30,0,0"
                                     HorizontalOptions="CenterAndExpand"></forms:ZXingScannerView>-->
 
+                <Image Source="QRimg.png"
+                       HorizontalOptions="Center"
+                       Margin="0,100,0,15"/>
                 <ImageButton Source="btn_qr"
-                             Margin="0,220,0,60"
+                             Margin="0,0,0,60"
                              BackgroundColor="Transparent"
                              Clicked="onQRReadBtn_clicked"/>
 

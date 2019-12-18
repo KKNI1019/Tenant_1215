@@ -26,7 +26,7 @@
                 
             </AbsoluteLayout>
             <Image Source="logo.png"
-                   Margin="80,20,80,10"/>
+                   Margin="80,25,80,15"/>
             <Image x:Name="img_building"
                    Margin="50,0,50,0"/>
             <Label x:Name="lbl_buildingName"

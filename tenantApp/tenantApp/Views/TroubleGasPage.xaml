@@ -16,46 +16,122 @@
                 <Label Text="チャットボットQ&amp;A" FontSize="18" TextColor="Black" AbsoluteLayout.LayoutBounds=".5,.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
                 <ImageButton Padding="10" BackgroundColor="Transparent" Source="icon_menu"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".99,.5" Clicked="btnMenu_Clicked"/>
             </AbsoluteLayout>
-            <ScrollView>
-                <Grid Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.15*"/>
-                        <ColumnDefinition Width="0.7*"/>
-                        <ColumnDefinition Width="0.15*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="imgRobot.png" HorizontalOptions="End" HeightRequest="30" Margin="0,10,0,0" VerticalOptions="Start"/>
-                    <AbsoluteLayout Grid.Column="1" HorizontalOptions="Center">
-                        <Image Source="imgOwnerChatBox_extend.png" 
-                           AbsoluteLayout.LayoutFlags="PositionProportional"
-                           AbsoluteLayout.LayoutBounds="0.01, 0.01"
-                           HorizontalOptions="FillAndExpand"/>
-                        <StackLayout 
-                        AbsoluteLayout.LayoutBounds="0.01,0.01"
-                        AbsoluteLayout.LayoutFlags="PositionProportional"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="26,20,20,20">
-                            <Label Text="ガスのことでお困りですね。どのような内容でしょうか？" Margin="10,0,10,10"/>
-                            <ImageButton 
-                            Source="trouble_gas1.png"
-                            BackgroundColor="Transparent"
-                            Clicked="trouble1_Clicked"/>
-                            <ImageButton 
-                            Source="trouble_gas2.png"
-                            BackgroundColor="Transparent"
-                            Clicked="trouble2_Clicked"/>
-                            <ImageButton 
-                            Source="trouble_gas3.png"
-                            BackgroundColor="Transparent"
-                            Clicked="trouble3_Clicked"/>
-                            <ImageButton 
-                            Source="trouble_other.png"
-                            BackgroundColor="Transparent"
-                            Clicked="troubleother_Clicked"/>
-                        </StackLayout>
-                    </AbsoluteLayout>
+            <ListView ItemsSource="{Binding MessageItem}"
+                      HasUnevenRows="True" 
+                      BackgroundColor="#93D1E8"
+                      SeparatorVisibility="None" x:Name="listview">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,20,0,0">
+                                <Grid IsVisible = "{Binding quizcontentsVisibility}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.15*"/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                        <ColumnDefinition Width="0.15*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="imgRobot.png" HorizontalOptions="End" HeightRequest="30" Margin="0,10,0,0" VerticalOptions="Start"/>
+                                    <AbsoluteLayout Grid.Column="1" HorizontalOptions="Center">
+                                        <Image Source="imgOwnerChatBox_extend.png" 
+                                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                                               AbsoluteLayout.LayoutBounds="0.01, 0.01"
+                                               HorizontalOptions="FillAndExpand"/>
+                                        <StackLayout 
+                                                AbsoluteLayout.LayoutBounds="0.01,0.01"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                HorizontalOptions="FillAndExpand"
+                                                Padding="26,20,20,20">
+                                            <Label Text="ガスのことでお困りですね。どのような内容でしょうか？" Margin="10,0,10,10"/>
+                                            <ImageButton 
+                                                    Source="trouble_gas1.png"
+                                                    BackgroundColor="Transparent"
+                                                    Clicked="trouble1_Clicked"/>
+                                            <ImageButton 
+                                                    Source="trouble_gas2.png"
+                                                    BackgroundColor="Transparent"
+                                                    Clicked="trouble2_Clicked"/>
+                                            <ImageButton 
+                                                    Source="trouble_gas3.png"
+                                                    BackgroundColor="Transparent"
+                                                    Clicked="trouble3_Clicked"/>
+                                            <ImageButton 
+                                                    Source="trouble_other.png"
+                                                    BackgroundColor="Transparent"
+                                                    Clicked="troubleother_Clicked"/>
+                                        </StackLayout>
+                                    </AbsoluteLayout>
+                                </Grid>
 
-                </Grid>
-            </ScrollView>
+                                <Grid IsVisible="{Binding faqcontentsVisibility}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.15*"/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                        <ColumnDefinition Width="0.15*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image x:Name="imgBot" 
+                                           Source="{Binding imgBot}" 
+                                           HorizontalOptions="End" 
+                                           HeightRequest="30" 
+                                           IsVisible="{Binding imgBotVisibility}"
+                                           VerticalOptions="Start"/>
+                                    <StackLayout Grid.Column="1" VerticalOptions="Start">
+                                        <StackLayout HorizontalOptions="Start" 
+                                                     Orientation="Horizontal"
+                                                     IsVisible="{Binding botFrameVisibility}">
+                                            <Image Source="tailLeft.png"
+                                                   WidthRequest="8"
+                                                   VerticalOptions="Start"
+                                                   Margin="0,10,-6,0"/>
+                                            <Frame x:Name="frame_bot" 
+                                                   BackgroundColor="White" 
+                                                   BorderColor="White" 
+                                                   CornerRadius="5"
+                                                   Margin="0,0,8,0"
+                                                   HasShadow="False"
+                                                   Padding="10">
+                                                <Label x:Name="ent_BotMsg" 
+                                                   TextColor="Black" 
+                                                   LineBreakMode="CharacterWrap"
+                                                   Text="{Binding BotAnswer}"/>
+                                            </Frame>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding userFrameVisibility}"
+                                                     HorizontalOptions="End"
+                                                     Orientation="Horizontal">
+                                            <Frame BackgroundColor="White" 
+                                                   HorizontalOptions="End"
+                                                   CornerRadius="5" 
+                                                   Padding="10"
+                                                   Margin="8,0,0,0"
+                                                   HasShadow="False"
+                                                   BorderColor="White" 
+                                                   x:Name="frame_user">
+                                                <Label  x:Name="ent_myMsg" 
+                                                        TextColor="Black"
+                                                        LineBreakMode="CharacterWrap"
+                                                        Text="{Binding UserQuestion}"/>
+                                            </Frame>
+                                            <Image Source="tailRight.png"
+                                                   HorizontalOptions="End"
+                                                   WidthRequest="8"
+                                                   VerticalOptions="Start"
+                                                   Margin="-6,10,0,0"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Image x:Name="imgUser" 
+                                           Source="{Binding imgUser}" 
+                                           IsVisible="{Binding imgUserVisibility}"
+                                           Grid.Column="2" 
+                                           HorizontalOptions="Start" 
+                                           HeightRequest="30" 
+                                           VerticalOptions="Start"/>
+
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             
             <Grid Padding="10" BackgroundColor="#064D55" VerticalOptions="EndAndExpand">
                 <Grid.ColumnDefinitions>
@@ -71,7 +147,7 @@
 							TextColor="Black"
                             VerticalOptions="Center"
                             Placeholder="質問を入力してください"
-							x:Name="email"/>
+							x:Name="ent_question"/>
                 </Frame>
                 <Button BackgroundColor="#FAC500"
                         HorizontalOptions="Center"

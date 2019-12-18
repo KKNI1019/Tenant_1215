@@ -9,6 +9,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using tenantApp.Models;
+using tenantApp.Views;
+using tenantApp.Webservices;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
@@ -89,7 +91,13 @@ namespace tenantApp
                     var botMessage = messages.Last().Text;
                     if(botMessage == "No QnA Maker answers were found.")
                     {
-                        botMessage = "Sorry.\nI have no good idea with your question.\n\nPlease call 09012345678 and you can get answer.";
+                        botMessage = Constants.BotAnswer_default;
+
+                        var display = await DisplayAlert("", botMessage, "はい", "キャンセル");
+                        if (display)
+                        {
+                            await Navigation.PushAsync(new QuizPage());
+                        }
                     }
 
                     msgItem.Add(new MessageItem

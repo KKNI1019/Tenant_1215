@@ -14,5 +14,7 @@ namespace tenantApp.Models
         public bool botFrameVisibility { get; set; }
         public bool imgBotVisibility { get; set; }
         public bool imgUserVisibility { get; set; }
+        public bool quizcontentsVisibility { get; set; }
+        public bool faqcontentsVisibility { get; set; }
     }
 }

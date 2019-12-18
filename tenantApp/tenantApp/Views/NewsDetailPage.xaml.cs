@@ -121,9 +121,9 @@ namespace tenantApp.Views
             await Navigation.PushAsync(new NewsFavoritePage());
         }
 
-        private async void ImgBtn_news_detail_Clicked(object sender, EventArgs e)
+        private void ImgBtn_news_detail_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewsWebPage(news_url));
+            Device.OpenUri(new Uri(news_url));
         }
 
         private void likes_tap(object sender, EventArgs e)

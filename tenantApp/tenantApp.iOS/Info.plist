@@ -5,13 +5,12 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
-		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -26,8 +25,6 @@
 	<string>budi concierge[入居者用]</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.xamarin.budi.tenant</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -47,18 +44,25 @@
 	<string>This app needs access to the camera to take photos.</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>This app needs to play video.</string>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>Document Type 1</string>
-		</dict>
-	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app needs access to calenda to show monthly data</string>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs access to location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs access to location.</string>
+	<key>LSHandlerRank</key>
+	<string>1</string>
+	<key>CFBundleVersion</key>
+	<string>5</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>Assets.xcassets/AppIcons.appiconset</string>
 </dict>
 </plist>

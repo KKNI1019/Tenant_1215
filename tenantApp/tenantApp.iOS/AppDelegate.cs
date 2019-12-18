@@ -59,36 +59,36 @@ namespace tenantApp.iOS
             
             UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(255, 215, 0);
 
-            Firebase.Core.App.Configure();
+            //Firebase.Core.App.Configure();
 
-            var token = Messaging.SharedInstance.FcmToken ?? "";
-            Preferences.Set("device_token", token);
+            //var token = Messaging.SharedInstance.FcmToken ?? "";
+            //Preferences.Set("device_token", token);
 
 
-            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-            {
-                // iOS 10 or later
-                var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
-                UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) =>
-                {
-                    Console.WriteLine(granted);
-                });
+            //if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            //{
+            //    // iOS 10 or later
+            //    var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
+            //    UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) =>
+            //    {
+            //        Console.WriteLine(granted);
+            //    });
 
-                // For iOS 10 display notification (sent via APNS)
-                UNUserNotificationCenter.Current.Delegate = this;
+            //    // For iOS 10 display notification (sent via APNS)
+            //    UNUserNotificationCenter.Current.Delegate = this;
 
-                // For iOS 10 data message (sent via FCM)
-                Messaging.SharedInstance.Delegate = this;
-            }
-            else
-            {
-                // iOS 9 or before
-                var allNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound;
-                var settings = UIUserNotificationSettings.GetSettingsForTypes(allNotificationTypes, null);
-                UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
-            }
+            //    // For iOS 10 data message (sent via FCM)
+            //    Messaging.SharedInstance.Delegate = this;
+            //}
+            //else
+            //{
+            //    // iOS 9 or before
+            //    var allNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound;
+            //    var settings = UIUserNotificationSettings.GetSettingsForTypes(allNotificationTypes, null);
+            //    UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+            //}
 
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+            //UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
             return base.FinishedLaunching(app, options);
         }

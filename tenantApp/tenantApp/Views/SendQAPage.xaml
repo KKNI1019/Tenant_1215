@@ -138,8 +138,6 @@
                         BorderRadius="7"
                         Text="送信"/>
             </Grid>
-            <!--<WebView Source="https://google.com" BackgroundColor="LightGreen" x:Name="webview" Margin="0,0,0,60"/>-->
-            <!--<WebView Source="https://webchat.botframework.com/embed/TTTFAQ?s=OOHJTKRb-Rw.29g_nw56WdyQl6PkcLyTsYQaj1n1sBZ5azzXD92nVH8" x:Name="webview"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
