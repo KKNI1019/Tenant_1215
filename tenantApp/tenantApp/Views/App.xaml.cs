@@ -55,6 +55,19 @@ namespace tenantApp
         static NoticeData notice_data;
         static Th_CommentData th_comment_data;
         public static FavoriteNewsDB Favorite_Data;
+        public static QADatabase qa_data;
+
+        public static QADatabase QA_Data
+        {
+            get
+            {
+                if (qa_data == null)
+                {
+                    qa_data = new QADatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tenantdb.db"));
+                }
+                return qa_data;
+            }
+        }
 
         public static ThreadData Th_Data
         {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tenantApp.Models;
+using tenantApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,75 +22,43 @@ namespace tenantApp
 		{
 			InitializeComponent ();
 
-            Columns = new List<Columns>();
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新新",
-                col_title = "Q&Aタイトル"
-            });
+            removeNew();
 
-            Columns.Add(new Columns
+            MessagingCenter.Subscribe<App>((App)Application.Current, "refreshpage", (sender) =>
             {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最最",
-                col_title = "Q&Aタイトル"
+                Refresh();
             });
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "ののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののののの",
-                col_title = "Q&Aタイトル"
-            });
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "ささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささささ",
-                col_title = "Q&Aタイトル"
-            });
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿稿",
-                col_title = "Q&Aタイトル"
-            });
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "ラララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララララv",
-                col_title = "Q&Aタイトル"
-            });
+        }
 
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示示",
-                col_title = "Q&Aタイトル"
-            });
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "まままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままままま",
-                col_title = "Q&Aタイトル"
-            });
-            Columns.Add(new Columns
-            {
-                date = DateTime.UtcNow,
-                img_url = "imgUser.png",
-                col_content = "ひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひひ",
-                col_title = "Q&Aタイトル"
-            });
+        private async void Refresh()
+        {
+            sflistview.ItemsSource = await App.QA_Data.GetNotiAsync();
+        }
 
-            BindingContext = this;
-            
+        private async void removeNew()
+        {
+            DateTime oldDate = DateTime.Now.AddDays(-5);
+
+            var qalist = await App.QA_Data.GetNotiAsync();
+            if (qalist.Count > 0)
+            {
+                for (int i = 0; i < qalist.Count; i++)
+                {
+                    int compare_date = DateTime.Compare(qalist[i].c_date, oldDate);
+                    if (compare_date < 0)
+                    {
+                        qalist[i].img_visibility = false;
+                        await App.QA_Data.SaveNotiAsync(qalist[i]);
+                    }
+                }
+            }
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            sflistview.ItemsSource = await App.QA_Data.GetNotiAsync();
         }
 
         private async void imgBack_Clicked(object sender, EventArgs e)
@@ -123,8 +92,24 @@ namespace tenantApp
             var action = await DisplayAlert("", "アイテムを削除します。", "削除する", "キャンセル");
             if (action)
             {
-                
+                Button button = (Button)sender;
+                string question = button.CommandParameter.ToString();
+
+                var qalist = await App.QA_Data.GetDelQAAsync(question);
+                await App.QA_Data.DeleteNotiAsync(qalist);
+
+                MessagingCenter.Send<App>((App)Application.Current, "refreshpage");
             }
+        }
+
+        private async void Sflistview_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new QADetailPage
+            {
+                BindingContext = e.ItemData as QAList
+            });
+
+            ((SfListView)sender).SelectedItem = null;
         }
     }
 }

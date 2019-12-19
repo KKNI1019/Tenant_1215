@@ -12,24 +12,30 @@
                        BorderColor="LightGray"
                        CornerRadius="7"
                        Padding="15,8" 
+                       HasShadow="False"
                        BackgroundColor="White" 
                        Margin="20,6">
                     <StackLayout VerticalOptions="Center">
                         <StackLayout Orientation="Horizontal" >
-                            <Label Text="{Binding date,StringFormat='{}{0:yyyy/MM/dd}'}" 
+                            <Label Text="{Binding c_date,StringFormat='{}{0:yyyy/MM/dd}'}" 
                                    Margin="20,0,5,0" 
                                    FontSize="10" 
                                    VerticalOptions="Center"/>
                             <Image Source="img_new.png"
+                                   IsVisible="{Binding img_visibility}"
                                    HeightRequest="16"
                                    VerticalOptions="Center"/>
                         </StackLayout>
-                        <Label Text="{Binding col_title}"
+                        <Label Text="{Binding question}"
                                TextColor="Black"
+                               MaxLines="1"
+                               Margin="0,0,50,0"
+                               LineBreakMode="TailTruncation"
                                FontSize="12" />
-                        <Label Text="{Binding col_content}" 
+                        <Label Text="{Binding answer}" 
                                TextColor="Black"
-                               FontSize="12" 
+                               FontSize="12"
+                               LineBreakMode="TailTruncation"
                                MaxLines="2" />
                     </StackLayout>
                 </Frame>
@@ -67,12 +73,13 @@
             </AbsoluteLayout>
             <sync:SfListView x:Name="sflistview"
                              BackgroundColor="WhiteSmoke"
-                             ItemsSource="{Binding Columns}"  
+                             ItemsSource="{Binding QAList}"  
                              ItemTemplate="{StaticResource ItemTemplate}"
                              AllowSwiping="True" 
                              SwipeOffset="120" 
                              SwipeThreshold="30"
                              IsStickyHeader="True"
+                             ItemTapped="Sflistview_ItemTapped"
                              SwipeStarted="ListView_SwipeStarted" 
                              SwipeEnded="ListView_SwipeEnded" 
                              Swiping="ListView_Swiping" 
@@ -89,6 +96,7 @@
                                 Text="削除" 
                                 TextColor="White"
                                 Clicked="BtnDel_Clicked"
+                                CommandParameter="{Binding question}"
                                 x:Name="btnDel"/>
 
                     </DataTemplate>
