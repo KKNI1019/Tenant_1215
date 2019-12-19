@@ -137,7 +137,7 @@ namespace tenantApp
                 listview.ScrollTo(msgList[msgList.Count - 1], ScrollToPosition.End, true);
 
                 var messageToSend = new BotMessage() { From = App.tenant_nickname, Text = ent_question.Text };
-                ent_question.Text = string.Empty;
+                
                 var contentPost = new StringContent(JsonConvert.SerializeObject(messageToSend), Encoding.UTF8, "application/json");
                 var coid = conversationID;
                 var conversationUrl = "https://directline.botframework.com/api/conversations/" + conversationID + "/messages/";
@@ -177,10 +177,20 @@ namespace tenantApp
                         imgUserVisibility = false
                     });
 
+                    await App.QA_Data.SaveNotiAsync(new QAList
+                    {
+                        question = "Q : " + ent_question.Text,
+                        answer = "A : " + botMessage,
+                        c_date = DateTime.Now,
+                        img_visibility = true
+                    });
+
                     listview.ItemsSource = msgItem;
 
                     List<MessageItem> mmlist = ((IEnumerable<MessageItem>)this.listview.ItemsSource).ToList();
                     listview.ScrollTo(mmlist[mmlist.Count - 1], ScrollToPosition.End, true);
+
+                    ent_question.Text = string.Empty;
 
                 }
                 catch { }

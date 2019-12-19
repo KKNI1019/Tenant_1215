@@ -223,6 +223,9 @@
     <None Update="Views\ProviderLoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="Views\QADetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="Views\QAPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
