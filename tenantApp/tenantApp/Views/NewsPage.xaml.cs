@@ -315,7 +315,7 @@ namespace tenantApp.Views
                     }
                     else
                     {
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", Constants.NETWORK_ERROR, "はい");
                     }
                 }
                 catch

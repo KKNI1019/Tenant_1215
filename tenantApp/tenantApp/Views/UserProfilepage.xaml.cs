@@ -37,7 +37,6 @@ namespace tenantApp
                 lbl_name.Text = App.tenant_name;
                 lbl_nickname.Text = App.tenant_nickname;
                 lbl_email.Text = App.tenant_email;
-                lbl_phone.Text = App.tenant_phone1 + "  " + App.tenant_phone2;
             });
         }
 
@@ -48,7 +47,6 @@ namespace tenantApp
             lbl_name.Text = App.tenant_name;
             lbl_nickname.Text = App.tenant_nickname;
             lbl_email.Text = App.tenant_email;
-            lbl_phone.Text = App.tenant_phone1 + "  " + App.tenant_phone2;
 
             if (App.tenant_profile != null)
             {

@@ -27,7 +27,6 @@ namespace tenantApp
             lbl_nickname.Text = "";
             lbl_tenant_address.Text = "";
             lbl_email.Text = App.tenant_email;
-            entry_phone.Text = App.tenant_phone1;
 
             if (App.tenant_profile != null)
             {
@@ -36,21 +35,13 @@ namespace tenantApp
 
         }
 
-        private async void ImgBtn_confirm_Clicked(object sender, EventArgs e)
+        private void ImgBtn_confirm_Clicked(object sender, EventArgs e)
         {
              App.tenant_name = lbl_name.Text ;
-             App.tenant_phone1 = entry_phone.Text ;
              App.tenant_nickname = lbl_nickname.Text ;
              App.tenant_email = lbl_email.Text ;
-
-            if (string.IsNullOrWhiteSpace(entry_phone.Text))
-            {
-                await DisplayAlert("", "詳細情報を正確に入力してください。", "はい");
-            }
-            else
-            {
-                getResult();
-            }
+            
+             getResult();
         }
 
         private async void getResult()
@@ -86,7 +77,7 @@ namespace tenantApp
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch
@@ -113,7 +104,7 @@ namespace tenantApp
             await CrossMedia.Current.Initialize();
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
-                await DisplayAlert("Not supported", "Your device does not support this functionality.", "OK");
+                await DisplayAlert("", "お使いのデバイスはこの機能をサポートしていません。", "はい");
                 return;
             }
             var mediaOptions = new PickMediaOptions()
@@ -123,7 +114,7 @@ namespace tenantApp
             var selectedImgFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
             if (selectedImgFile == null)
             {
-                await DisplayAlert("Error", "Could not get the image, please try again.", "OK");
+                await DisplayAlert("", "画像を取得できませんでした。もう一度お試しください。", "はい");
                 return;
             }
 

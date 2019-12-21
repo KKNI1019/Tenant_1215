@@ -102,7 +102,7 @@ namespace tenantApp.Views
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch
@@ -199,7 +199,7 @@ namespace tenantApp.Views
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch

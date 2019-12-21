@@ -69,7 +69,7 @@ namespace tenantApp
                 {
                     loadinbar.IsRunning = false;
                     //DependencyService.Get<IMessage>().LongAlert(resultMsg.message);
-                    await Navigation.PushAsync(new UserRegisterPage());
+                    await Navigation.PushAsync(new TabPage());
                 }
                 else
                 {

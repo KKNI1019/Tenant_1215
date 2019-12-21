@@ -51,13 +51,13 @@ namespace tenantApp
                     if (resultMsg.resp.Equals("success"))
                     {
                         loadingbar.IsRunning = false;
-                        await Navigation.PushAsync(new TabPage());
+                        await Navigation.PushAsync(new CaptureCertiPage());
                     }
                     else
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch
@@ -93,7 +93,7 @@ namespace tenantApp
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch

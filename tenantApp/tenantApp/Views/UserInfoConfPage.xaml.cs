@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using tenantApp.Webservices;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,16 +16,19 @@ namespace tenantApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class UserInfoConfPage : ContentPage
 	{
-       
+        private string device_token;
+
         public UserInfoConfPage ()
 		{
 			InitializeComponent ();
 
             lbl_familyname.Text = App.tenant_family_name;
             lbl_name.Text = App.tenant_first_name;
-            lbl_phonenum.Text = App.tenant_phone1;
-            lbl_birthday.Text = App.tenant_birthday;
-		}
+            lbl_pwd.Text = App.tenant_password;
+            lbl_email.Text = App.tenant_email;
+
+            device_token = Preferences.Get("device_token", "");
+        }
 
         private async void Btn_changeInfo_Clicked(object sender, EventArgs e)
         {
@@ -45,10 +49,11 @@ namespace tenantApp
             {
                 var formcontent = new FormUrlEncodedContent(new[]
                 {
-                        new KeyValuePair<string, string>("tenant_name", App.tenant_name),
-                        new KeyValuePair<string, string>("tenant_phone1", App.tenant_phone1),
-                        new KeyValuePair<string, string>("tenant_birthday", App.tenant_birthday)
-                    });
+                    new KeyValuePair<string, string>("tenant_name", App.tenant_name),
+                    new KeyValuePair<string, string>("tenant_email", App.tenant_email),
+                    new KeyValuePair<string, string>("tenant_password", App.tenant_password),
+                    new KeyValuePair<string, string>("device_token", device_token)
+                });
                 try
                 {
                     var request = await cl.PostAsync(App.endpoint + "api/user/regist", formcontent);
@@ -62,13 +67,15 @@ namespace tenantApp
 
                         App.tenant_ID = resultMsg.tenant_id;
 
-                        await Navigation.PushAsync(new CaptureCertiPage());
+                        Preferences.Set(Constants.TENANT_EMAIL, App.tenant_email);
+                        Preferences.Set(Constants.TENANT_PWD, App.tenant_password);
+                        await Navigation.PushAsync(new ConfirmEmailPage(App.tenant_email));
                     }
                     else
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch

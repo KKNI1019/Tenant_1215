@@ -83,7 +83,7 @@ namespace tenantApp.Views
                         {
                             loadingbar.IsRunning = false;
 
-                            await DisplayAlert("", resultMsg.resp, "はい");
+                            await DisplayAlert("", Constants.NETWORK_ERROR, "はい");
                         }
                     }
                     catch

@@ -34,35 +34,35 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>Privacy - Camera Usage Description</key>
-	<string>This app needs access to the camera to scan barcodes and take photos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to the camera to scan barcodes and take photos</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This app needs to save image in order to send to server.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>This app needs access to the camera to take photos.</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>This app needs to play video.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>This app needs access to calenda to show monthly data</string>
 	<key>UISupportsDocumentBrowser</key>
 	<true/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to location.</string>
 	<key>LSHandlerRank</key>
 	<string>1</string>
-	<key>CFBundleVersion</key>
-	<string>5</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcons.appiconset</string>
+	<key>CFBundleVersion</key>
+	<string>7</string>
+	<key>Privacy - Camera Usage Description</key>
+	<string>このアプリは、バーコードをスキャンして写真を撮るためにカメラにアクセスする必要があります</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>このアプリは、バーコードをスキャンして写真を撮るためにカメラにアクセスする必要があります</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>このアプリはサーバーに送信するために画像を保存する必要があります。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>このアプリは写真を撮るためにカメラにアクセスする必要があります。</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>このアプリはビデオを再生する必要があります。</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>このアプリは、月ごとのデータを表示するためにカレンダーにアクセスする必要があります</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>このアプリは場所にアクセスする必要があります。</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>このアプリは場所にアクセスする必要があります。</string>
 </dict>
 </plist>

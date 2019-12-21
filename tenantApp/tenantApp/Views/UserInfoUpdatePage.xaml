@@ -88,18 +88,7 @@
                                    TextColor="Black"
                                    FontSize="15"/>
                         </Frame>
-                        <Label Text="連絡先電話番号" FontSize="11" VerticalTextAlignment="End" TextColor="Black"/>
-                        <Frame BorderColor="DarkGray"
-                               Padding="5"
-                               HeightRequest="30"
-                               HasShadow="False"
-                               CornerRadius="3">
-                            <local:BorderlessEntry x:Name="entry_phone"
-                                                   VerticalOptions="Center"
-                                        TextColor="Black"
-                                        FontSize="15"/>
-                        </Frame>
-                        
+
                         <ImageButton Source="update.png"
                          Margin="0,15,0,0"
                          x:Name="imgBtn_confirm"

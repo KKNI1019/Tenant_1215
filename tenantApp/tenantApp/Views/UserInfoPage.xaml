@@ -18,102 +18,84 @@
                     </StackLayout.GestureRecognizers>
                     <Image  Source="imgBack.png" VerticalOptions="CenterAndExpand" />
                 </StackLayout>
-                
-                <Label Text="詳細情報" FontSize="18" TextColor="Black" AbsoluteLayout.LayoutBounds=".5,.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <Image Source="logo_full_land.png" 
+                           AbsoluteLayout.LayoutBounds=".5,.5" 
+                           HeightRequest="40" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional"/>
             </AbsoluteLayout>
-            <StackLayout  Padding="20, 30,20,0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Label Text="姓" VerticalTextAlignment="End" TextColor="Black"/>
-                    <Label Text="名" Grid.Column="1" VerticalTextAlignment="End" TextColor="Black"/>
-                    <local:RoundedEntry x:Name="ent_familyname" Placeholder="鈴木" PlaceholderColor="Gray"
-                                    TextColor="Black"
-                                    Grid.Row="1"
-                                HorizontalOptions="Fill"/>
-                    <local:RoundedEntry x:Name="ent_name" Placeholder="一郎" PlaceholderColor="Gray"
-                                    TextColor="Black"
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                HorizontalOptions="Fill"/>
-                </Grid>
-
-                <Grid Margin="0,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.4*"/>
-                        <ColumnDefinition Width="0.6*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Label Text="生年月日" Grid.ColumnSpan="2" VerticalTextAlignment="End" TextColor="Black"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.8*"/>
-                            <ColumnDefinition Width="0.2*"/>
-                        </Grid.ColumnDefinitions>
-                        <local:RoundedEntry x:Name="ent_birthyear" Placeholder="1983" MaxLength="4" PlaceholderColor="Gray" Keyboard="Numeric"
-                                        HorizontalTextAlignment="Center"
-                                    TextColor="Black"/>
-                        <Label Text="年" TextColor="Black" VerticalTextAlignment="End" Grid.Column="1"/>
-                    </Grid>
-                    <Grid Grid.Row="1" Grid.Column="1">
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout  Padding="20, 30,20,0" VerticalOptions="Center">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="0.5*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.8*"/>
-                                <ColumnDefinition Width="0.2*"/>
-                            </Grid.ColumnDefinitions>
-                            <local:RoundedEntry x:Name="ent_birthmonth" Placeholder="09" MaxLength="2" PlaceholderColor="Gray" Keyboard="Numeric"
-                                            HorizontalTextAlignment="Center"
-                                    TextColor="Black"
-                                HorizontalOptions="Fill"/>
-                            <Label Text="月" TextColor="Black" Grid.Column="1" VerticalTextAlignment="End"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.8*"/>
-                                <ColumnDefinition Width="0.2*"/>
-                            </Grid.ColumnDefinitions>
-                            <local:RoundedEntry x:Name="ent_birthdate" MaxLength="2" Placeholder="01" PlaceholderColor="Gray" Keyboard="Numeric"
-                                            HorizontalTextAlignment="Center"
-                                    TextColor="Black"
-                                HorizontalOptions="Fill"/>
-                            <Label Text="日" TextColor="Black" Grid.Column="1" VerticalTextAlignment="End"/>
-                        </Grid>
-
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Label Text="姓" VerticalTextAlignment="End" TextColor="Black" FontSize="12"/>
+                        <Label Text="名" Grid.Column="1" VerticalTextAlignment="End" TextColor="Black" FontSize="12"/>
+                        <local:RoundedEntry x:Name="ent_familyname" Placeholder="鈴木" PlaceholderColor="Gray"
+                                        TextColor="Black"
+                                        Grid.Row="1"
+                                    HorizontalOptions="Fill"/>
+                        <local:RoundedEntry x:Name="ent_name" Placeholder="一郎" PlaceholderColor="Gray"
+                                        TextColor="Black"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                    HorizontalOptions="Fill"/>
                     </Grid>
-                </Grid>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Label Text="電話番号" VerticalTextAlignment="End" TextColor="Black" />
-                    <local:RoundedEntry x:Name="ent_phoneNum1" Placeholder="09012345678" MaxLength="11" PlaceholderColor="Gray" Keyboard="Numeric"
-                                    TextColor="Black"
-                                    Grid.Row="1"
-                                HorizontalOptions="Fill"/>
-                </Grid>
+
+                    <StackLayout>
+                        <Label Text="メールアドレス" FontSize="12" Margin="0,5,0,0"/>
+                        <local:RoundedEntry  Keyboard="Email" 
+                                             x:Name="ent_email"
+                                             TextColor="Black"/>
+                        <Label Text="パスワード" FontSize="12" Margin="0,5,0,0"/>
+                        <local:RoundedEntry x:Name="ent_pwd"
+                                            IsPassword="True"
+                                            TextColor="Black"/>
+                        <Label Text="パスワード再入力" FontSize="12" Margin="0,5,0,0"/>
+                        <local:RoundedEntry x:Name="ent_pwd_again"
+                                            IsPassword="True"
+                                            TextColor="Black"/>
+
+                        <StackLayout Orientation="Horizontal" 
+                                     HorizontalOptions="Center" 
+                                     Margin="0,6">
+                            <ImageButton x:Name="imgBtn_unchecked" 
+                                         VerticalOptions="Center" 
+                                         Source="unchecked" 
+                                         BackgroundColor="Transparent"  
+                                         Clicked="uncheckedBtn_Clicked"/>
+                            <ImageButton x:Name="imgBtn_checked"  
+                                         VerticalOptions="Center" 
+                                         Source="checked" 
+                                         BackgroundColor="Transparent" 
+                                         IsVisible="False" 
+                                         Clicked="checkedBtn_Clicked"/>
+                            <Label Text="利用規約"
+                                   Margin="0,0,-5,0"
+                                   FontSize="13"
+                                   TextColor="#F8B500"
+                                   TextDecorations="Underline"
+                                   VerticalOptions="Center"
+                                   x:Name="label_rule"/>
+                            <Label Text="に同意する" 
+                                   FontSize="13" 
+                                   VerticalTextAlignment="Center"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
                 
-                
-                <ImageButton Source="imgBtn_confirm.png"
-                         Margin="0,50,0,0"
-                         x:Name="imgBtn_confirm"
-                         BackgroundColor="Transparent"
-                         Clicked="ImgBtn_confirm_Clicked"/>
+                    <ImageButton Source="imgBtn_confirm.png"
+                             Margin="0,40,0,0"
+                             x:Name="imgBtn_confirm"
+                             BackgroundColor="Transparent"
+                             Clicked="ImgBtn_confirm_Clicked"/>
+                </StackLayout>
             </StackLayout>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

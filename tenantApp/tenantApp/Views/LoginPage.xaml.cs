@@ -126,7 +126,7 @@ namespace tenantApp
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch
@@ -138,55 +138,55 @@ namespace tenantApp
             }
         }
 
-        private async void ImgBtn_facebookLogin_Clicked(object sender, EventArgs e)
-        {
-            //if (imgBtn_checked.IsVisible == false)
-            //{
-            //    await DisplayAlert("", "利用規約を確認してください。", "はい");
-            //}
-            //else
-            //{
-                OAuth2Base oAuth2 = null;
-                oAuth2 = FacebookOAuth2.Instance;
+        //private async void ImgBtn_facebookLogin_Clicked(object sender, EventArgs e)
+        //{
+        //    //if (imgBtn_checked.IsVisible == false)
+        //    //{
+        //    //    await DisplayAlert("", "利用規約を確認してください。", "はい");
+        //    //}
+        //    //else
+        //    //{
+        //        OAuth2Base oAuth2 = null;
+        //        oAuth2 = FacebookOAuth2.Instance;
 
-                var authenticator = new OAuth2Authenticator(
-                        oAuth2.ClientId,
-                        oAuth2.ClientSecret,
-                        oAuth2.Scope,
-                        oAuth2.AuthorizationUri,
-                        oAuth2.RedirectUri,
-                        oAuth2.RequestTokenUri,
-                        null,
-                        oAuth2.IsUsingNativeUI);
+        //        var authenticator = new OAuth2Authenticator(
+        //                oAuth2.ClientId,
+        //                oAuth2.ClientSecret,
+        //                oAuth2.Scope,
+        //                oAuth2.AuthorizationUri,
+        //                oAuth2.RedirectUri,
+        //                oAuth2.RequestTokenUri,
+        //                null,
+        //                oAuth2.IsUsingNativeUI);
 
-                authenticator.Completed += async (s, ee) =>
-                {
-                    if (ee.IsAuthenticated)
-                    {
-                        var user = await oAuth2.GetUserInfoAsync(ee.Account);
-                        string name = user.Name;
-                        string email = user.email;
-                        string Id = user.Id;
+        //        authenticator.Completed += async (s, ee) =>
+        //        {
+        //            if (ee.IsAuthenticated)
+        //            {
+        //                var user = await oAuth2.GetUserInfoAsync(ee.Account);
+        //                string name = user.Name;
+        //                string email = user.email;
+        //                string Id = user.Id;
 
-                        App.tenant_name = name;
-                        App.tenant_email = email;
+        //                App.tenant_name = name;
+        //                App.tenant_email = email;
 
-                        RegisterResultCheck(name, email, "facebook_" + Id, device_token);
+        //                RegisterResultCheck(name, email, "facebook_" + Id, device_token);
 
-                        //await Navigation.PushAsync(new TabPage());
+        //                //await Navigation.PushAsync(new TabPage());
 
-                        Debug.WriteLine("Authentication Success");
-                    }
-                };
-                authenticator.Error += (s, ee) =>
-                {
-                    Debug.WriteLine("Authentication error: " + ee.Message);
-                };
+        //                Debug.WriteLine("Authentication Success");
+        //            }
+        //        };
+        //        authenticator.Error += (s, ee) =>
+        //        {
+        //            Debug.WriteLine("Authentication error: " + ee.Message);
+        //        };
 
-                var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
-                presenter.Login(authenticator);
-            //}
-        }
+        //        var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
+        //        presenter.Login(authenticator);
+        //    //}
+        //}
 
         private async void RegisterResultCheck(string name, string email, string method, string token)
         {
@@ -246,7 +246,7 @@ namespace tenantApp
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", resultMsg.message, "はい");
                     }
                 }
                 catch
@@ -266,29 +266,29 @@ namespace tenantApp
             public string Id { get; set; }
         }
 
-        private async void ImgBtn_twitterLogin_Clicked(object sender, EventArgs e)
-        {
-            //if (imgBtn_checked.IsVisible == false)
-            //{
-            //    await DisplayAlert("", "利用規約を確認してください。", "はい");
-            //}
-            //else
-            //{
-                var Twitterauth = new OAuth1Authenticator(
-                           consumerKey: "P4a4J57m7UEIGKh4p6LiFsmZa",
-                           consumerSecret: "pAQRsnP0FFHDT6KVwvKxSPAVi9V2uCUnUGolgupB9QD1EMNbOj",
-                           requestTokenUrl: new Uri("https://api.twitter.com/oauth/request_token"),
-                           authorizeUrl: new Uri("https://api.twitter.com/oauth/authorize"),
-                           accessTokenUrl: new Uri("https://api.twitter.com/oauth/access_token"),
-                           callbackUrl: new Uri("https://www.facebook.com/connect/login_success.html")
-             );
+        //private async void ImgBtn_twitterLogin_Clicked(object sender, EventArgs e)
+        //{
+        //    //if (imgBtn_checked.IsVisible == false)
+        //    //{
+        //    //    await DisplayAlert("", "利用規約を確認してください。", "はい");
+        //    //}
+        //    //else
+        //    //{
+        //        var Twitterauth = new OAuth1Authenticator(
+        //                   consumerKey: "P4a4J57m7UEIGKh4p6LiFsmZa",
+        //                   consumerSecret: "pAQRsnP0FFHDT6KVwvKxSPAVi9V2uCUnUGolgupB9QD1EMNbOj",
+        //                   requestTokenUrl: new Uri("https://api.twitter.com/oauth/request_token"),
+        //                   authorizeUrl: new Uri("https://api.twitter.com/oauth/authorize"),
+        //                   accessTokenUrl: new Uri("https://api.twitter.com/oauth/access_token"),
+        //                   callbackUrl: new Uri("https://www.facebook.com/connect/login_success.html")
+        //     );
 
-                Twitterauth.Completed += TwitterAuth_Completed;
+        //        Twitterauth.Completed += TwitterAuth_Completed;
 
-                var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
-                presenter.Login(Twitterauth);
-            //}
-        }
+        //        var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
+        //        presenter.Login(Twitterauth);
+        //    //}
+        //}
 
         private async void TwitterAuth_Completed(object sender, AuthenticatorCompletedEventArgs e)
         {
@@ -321,53 +321,53 @@ namespace tenantApp
             }
         }
 
-        private async void ImgBtn_lineLogin_Clicked(object sender, EventArgs e)
-        {
-            //if (imgBtn_checked.IsVisible == false)
-            //{
-            //    await DisplayAlert("", "利用規約を確認してください。", "はい");
-            //}
-            //else
-            //{
-                OAuth2Base oAuth2 = null;
-                oAuth2 = LineOAuth2.Instance;
+        //private async void ImgBtn_lineLogin_Clicked(object sender, EventArgs e)
+        //{
+        //    //if (imgBtn_checked.IsVisible == false)
+        //    //{
+        //    //    await DisplayAlert("", "利用規約を確認してください。", "はい");
+        //    //}
+        //    //else
+        //    //{
+        //        OAuth2Base oAuth2 = null;
+        //        oAuth2 = LineOAuth2.Instance;
 
-                var authenticator = new OAuth2Authenticator(
-                        oAuth2.ClientId,
-                        oAuth2.ClientSecret,
-                        oAuth2.Scope,
-                        oAuth2.AuthorizationUri,
-                        oAuth2.RedirectUri,
-                        oAuth2.RequestTokenUri,
-                        null,
-                        oAuth2.IsUsingNativeUI);
+        //        var authenticator = new OAuth2Authenticator(
+        //                oAuth2.ClientId,
+        //                oAuth2.ClientSecret,
+        //                oAuth2.Scope,
+        //                oAuth2.AuthorizationUri,
+        //                oAuth2.RedirectUri,
+        //                oAuth2.RequestTokenUri,
+        //                null,
+        //                oAuth2.IsUsingNativeUI);
 
-                authenticator.Completed += async (s, ee) =>
-                {
-                    if (ee.IsAuthenticated)
-                    {
-                        await Navigation.PushAsync(new TabPage());
+        //        authenticator.Completed += async (s, ee) =>
+        //        {
+        //            if (ee.IsAuthenticated)
+        //            {
+        //                await Navigation.PushAsync(new TabPage());
 
-                        var user = await oAuth2.GetUserInfoAsync(ee.Account);
-                        string name = user.Name;
-                        string email = user.email;
-                        string Id = user.Id;
+        //                var user = await oAuth2.GetUserInfoAsync(ee.Account);
+        //                string name = user.Name;
+        //                string email = user.email;
+        //                string Id = user.Id;
 
-                        App.tenant_name = name;
-                        App.tenant_email = email;
+        //                App.tenant_name = name;
+        //                App.tenant_email = email;
 
-                        RegisterResultCheck(name, email, "line_" + Id, device_token);
-                    }
-                };
-                authenticator.Error += (s, ee) =>
-                {
-                    Debug.WriteLine("Authentication error: " + ee.Message);
-                };
+        //                RegisterResultCheck(name, email, "line_" + Id, device_token);
+        //            }
+        //        };
+        //        authenticator.Error += (s, ee) =>
+        //        {
+        //            Debug.WriteLine("Authentication error: " + ee.Message);
+        //        };
 
-                var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
-                presenter.Login(authenticator);
-            //}
-        }
+        //        var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
+        //        presenter.Login(authenticator);
+        //    //}
+        //}
 
         private async void stkBack_Tapped(object sender, EventArgs e)
         {

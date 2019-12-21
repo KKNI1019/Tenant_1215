@@ -97,7 +97,7 @@ namespace tenantApp
                     {
                         loadingbar.IsRunning = false;
 
-                        await DisplayAlert("", resultMsg.resp, "はい");
+                        await DisplayAlert("", "サーバー接続でエラーが発生しました。", "はい");
                     }
                 }
                 catch
