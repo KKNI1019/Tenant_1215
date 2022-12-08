@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Octane.Xam.VideoPlayer" Version="3.1.0" />
     <PackageReference Include="Plugin.Badge" Version="2.2.1" />
     <PackageReference Include="Plugin.FirebasePushNotification" Version="2.3.6" />
